@@ -28,9 +28,9 @@ class Enrollment extends Model
     ];
 
     const STATUS_RADIO = [
-        'awaiting' => 'Awaiting',
-        'accepted' => 'Accepted',
-        'rejected' => 'Rejected',
+        'Ожидает' => 'Ожидает',
+        'Принято' => 'Принято',
+        'Отклонено' => 'Отклонено',
     ];
 
     protected static function boot()

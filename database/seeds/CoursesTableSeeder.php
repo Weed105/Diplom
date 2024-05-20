@@ -14,30 +14,29 @@ class CoursesTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('Ru_RU');
         $courses = [
             [
-                'name' => 'Web Development',
-                'description' => $faker->paragraph,
+                'name' => 'Веб-разработка',
+                'description' => "Описание курса",
                 'institution_id' => 1,
                 'price' => 130
             ],
             [
-                'name' => 'Web UX/UI Design',
-                'description' => $faker->paragraph,
+                'name' => 'Разработка UX/UI дизайна',
+                'description' => "Описание курса",
                 'institution_id' => 2,
                 'price' => null
             ],
             [
-                'name' => 'Wordpress Development',
-                'description' => $faker->paragraph,
+                'name' => 'Разработка ПО',
+                'description' => "Описание курса",
                 'institution_id' => 3,
                 'price' => 160
             ],
         ];
 
-        foreach($courses as $id=>$courses)
-        {
+        foreach ($courses as $id => $courses) {
             $id++;
             $course = Course::create($courses);
             $course->addMedia(public_path("img/course/course_$id.png"))->preservingOriginal()->toMediaCollection('photo');

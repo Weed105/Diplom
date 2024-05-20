@@ -13,11 +13,10 @@ class InstitutionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('Ru_RU');
 
-        foreach(range(1,3) as $id)
-        {
-            $institution = Institution::create(['name' => $faker->unique()->company, 'description' => $faker->paragraph]);
+        foreach (range(1, 3) as $id) {
+            $institution = Institution::create(['name' => $faker->unique()->company, 'description' => "Описание учреждения"]);
             $institution->addMedia(public_path("img/institutions/institution_$id.png"))->preservingOriginal()->toMediaCollection('logo');
         }
         User::find(2)->update(['institution_id' => 1]);

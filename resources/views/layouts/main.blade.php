@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Etrain</title>
-    <link rel="icon" href="{{ asset('img/favicon.png') }}">
+    <title>Курсы</title>
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
@@ -25,6 +25,8 @@
     @yield('content')
 
     @include('partials.footer')
+
+
 
     <script src="{{ asset('js/jquery-1.12.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>

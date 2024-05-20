@@ -11,7 +11,7 @@ class CourseController extends Controller
         $courses = Course::searchResults()
             ->paginate(6);
 
-        $breadcrumb = "Courses";
+        $breadcrumb = "Курсы";
 
         return view('courses.index', compact(['courses', 'breadcrumb']));
     }

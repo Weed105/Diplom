@@ -97,7 +97,7 @@ class CoursesController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyCourseRequest $request)
+    public function massDestroy()
     {
         Course::whereIn('id', request('ids'))->delete();
 

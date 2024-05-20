@@ -11,15 +11,14 @@ class EnrollmentController extends Controller
 {
     public function create(Course $course)
     {
-        $breadcrumb = "Enroll in $course->name course";
+        $breadcrumb = "Записаться на курс: $course->name";
 
         return view('enrollment.enroll', compact('course', 'breadcrumb'));
     }
 
     public function store(Request $request, Course $course)
     {
-        if(auth()->guest())
-        {
+        if (auth()->guest()) {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
@@ -34,7 +33,7 @@ class EnrollmentController extends Controller
 
             auth()->login($user);
         }
-        
+
         $course->enrollments()->create(['user_id' => auth()->user()->id]);
 
         return redirect()->route('enroll.myCourses');
@@ -47,7 +46,7 @@ class EnrollmentController extends Controller
 
     public function myCourses()
     {
-        $breadcrumb = "My Courses";
+        $breadcrumb = "Мои курсы";
 
         $userEnrollments = auth()->user()
             ->enrollments()
