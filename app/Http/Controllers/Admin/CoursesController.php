@@ -75,7 +75,6 @@ class CoursesController extends Controller
         } elseif ($course->photo) {
             $course->photo->delete();
         }
-
         return redirect()->route('admin.courses.index');
     }
 

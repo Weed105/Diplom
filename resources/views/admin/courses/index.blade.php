@@ -38,10 +38,16 @@
                                 {{ trans('cruds.course.fields.institution') }}
                             </th>
                             <th>
-                                {{ trans('cruds.course.fields.price') }}
+                                {{ trans('cruds.course.fields.disciplines') }}
                             </th>
                             <th>
-                                {{ trans('cruds.course.fields.disciplines') }}
+                                Материал
+                            </th>
+                            <th>
+                                Д/з
+                            </th>
+                            <th>
+                                Статус
                             </th>
                             <th>
                                 &nbsp;
@@ -73,13 +79,20 @@
                                 <td>
                                     {{ $course->institution->name ?? '' }}
                                 </td>
-                                <td>
-                                    {{ $course->price ?? '' }}
-                                </td>
+
                                 <td>
                                     @foreach ($course->disciplines as $key => $item)
                                         <span class="badge badge-info">{{ $item->name }}</span>
                                     @endforeach
+                                </td>
+                                <td>
+                                    {{ $course->material ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $course->homework ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $course->status ?? '' }}
                                 </td>
                                 <td>
                                     @can('course_show')

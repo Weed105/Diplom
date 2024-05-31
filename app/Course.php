@@ -32,6 +32,9 @@ class Course extends Model implements HasMedia
         'updated_at',
         'deleted_at',
         'description',
+        'material',
+        'homework',
+        'status',
         'institution_id',
     ];
 
@@ -72,11 +75,6 @@ class Course extends Model implements HasMedia
     public function disciplines()
     {
         return $this->belongsToMany(Discipline::class);
-    }
-
-    public function getPrice()
-    {
-        return $this->price ? number_format($this->price, 2) . '₽' : 'Бесплатно';
     }
 
     public function scopeSearchResults($query)

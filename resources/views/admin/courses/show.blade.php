@@ -55,10 +55,26 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.course.fields.price') }}
+                                Материал
                             </th>
                             <td>
-                                ${{ $course->price }}
+                                {{ $course->material ?? '' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Домашнее задание
+                            </th>
+                            <td>
+                                {{ $course->homework ?? '' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Статус
+                            </th>
+                            <td>
+                                {{ $course->status ?? '' }}
                             </td>
                         </tr>
                         <tr>

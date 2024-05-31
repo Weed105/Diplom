@@ -8,7 +8,7 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::searchResults()
+        $courses = Course::where('status', 'Не запущен')->searchResults()
             ->paginate(6);
 
         $breadcrumb = "Курсы";
@@ -20,7 +20,16 @@ class CourseController extends Controller
     {
         $course->load('institution');
         $breadcrumb = $course->name;
+        $userEnrollments = [];
+        if (auth()->user()) {
+            $userEnrollments = auth()->user()
+                ->enrollments()
+                ->with('course.institution')
+                ->orderBy('id', 'desc')
+                ->paginate(6);
+        }
 
-        return view('courses.show', compact(['course', 'breadcrumb']));
+
+        return view('courses.show', compact(['course', 'breadcrumb', 'userEnrollments']));
     }
 }

@@ -121,6 +121,7 @@ return [
             'price_helper'       => '',
             'disciplines'        => 'Дисциплины',
             'disciplines_helper' => '',
+            'materials_helper' => '',
             'created_at'         => 'Создано в',
             'created_at_helper'  => '',
             'updated_at'         => 'Обновлено в',

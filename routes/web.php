@@ -14,6 +14,9 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('enroll/login/{course}', 'EnrollmentController@handleLogin')->name('enroll.handleLogin')->middleware('auth');
 Route::get('enroll/{course}', 'EnrollmentController@create')->name('enroll.create');
 Route::post('enroll/{course}', 'EnrollmentController@store')->name('enroll.store');
+
+Route::post('answer/{course}', 'AnswerController@create')->name('answer.create');
+
 Route::get('my-courses', 'EnrollmentController@myCourses')->name('enroll.myCourses')->middleware('auth');
 Route::resource('courses', 'CourseController')->only(['index', 'show']);
 
@@ -44,6 +47,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('courses/destroy', 'CoursesController@massDestroy')->name('courses.massDestroy');
     Route::post('courses/media', 'CoursesController@storeMedia')->name('courses.storeMedia');
     Route::resource('courses', 'CoursesController');
+
+    // Modules
+    Route::delete('modules/destroy', 'ModulesController@massDestroy')->name('modules.massDestroy');
+    Route::post('modules/media', 'ModulesController@storeMedia')->name('modules.storeMedia');
+    Route::resource('modules', 'ModulesController');
 
     // Enrollments
     Route::delete('enrollments/destroy', 'EnrollmentsController@massDestroy')->name('enrollments.massDestroy');

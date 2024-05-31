@@ -21,7 +21,8 @@
                                     <a href="{{ route('courses.index') }}?discipline={{ $discipline->id }}"
                                         class="btn_4 mr-1 mb-1">{{ $discipline->name }}</a>
                                 @endforeach
-                                <h4>{{ $course->getPrice() }}</h4>
+
+                                {{-- <h4>{{ $course->getPrice() }}</h4> --}}
                                 <a href="{{ route('courses.show', $course->id) }}">
                                     <h3>{{ $course->name }}</h3>
                                 </a>

@@ -15,7 +15,11 @@ class CreateCoursesTable extends Migration
 
             $table->longText('description')->nullable();
 
-            $table->decimal('price', 15, 2)->nullable();
+            $table->text('material');
+
+            $table->text('homework');
+
+            $table->string('status');
 
             $table->timestamps();
 
