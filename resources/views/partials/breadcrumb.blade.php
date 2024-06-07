@@ -1,4 +1,5 @@
-<section class="breadcrumb breadcrumb_bg">
+<section class="breadcrumb breadcrumb_bg"style="
+height: 260px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

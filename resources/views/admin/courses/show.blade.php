@@ -55,6 +55,14 @@
                         </tr>
                         <tr>
                             <th>
+                                Преподаватель
+                            </th>
+                            <td>
+                                {{ $course->teacher_id->name ?? '' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 Материал
                             </th>
                             <td>

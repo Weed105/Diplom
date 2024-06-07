@@ -1,9 +1,10 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="special_cource padding_top">
+    <section class="special_cource padding_top" style="
+    padding-top: 100px;">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" style="height: 140px">
                 <div class="col-xl-5">
                     <div class="section_tittle text-center">
                         <p>Курсы</p>
@@ -15,8 +16,8 @@
                 @foreach ($newestCourses as $course)
                     <div class="col-sm-6 col-lg-4">
                         <div class="single_special_cource">
-                            <img src="{{ optional($course->photo)->getUrl() ?? asset('img/no_image.png') }}"
-                                class="special_img" alt="">
+                            {{-- <img src="{{ optional($course->photo)->getUrl() ?? asset('img/no_image.png') }}"
+                                class="special_img" alt=""> --}}
                             <div class="special_cource_text">
                                 @foreach ($course->disciplines as $discipline)
                                     <a href="{{ route('courses.index') }}?discipline={{ $discipline->id }}"
@@ -49,7 +50,7 @@
         </div>
     </section>
 
-    <section class="blog_part section_padding">
+    <section class="blog_part section_padding" style="padding-top: 60px">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-5">

@@ -1,15 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="special_cource padding_top">
+    <section class="special_cource padding_top" style="
+    padding-top: 20px;">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-5">
-                    <div class="section_tittle text-center">
-                        <h2>Курсы</h2>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 @foreach ($courses as $course)
                     <div class="col-sm-6 col-lg-4 mb-3">

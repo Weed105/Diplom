@@ -17,10 +17,6 @@ class CreateCoursesTable extends Migration
 
             $table->text('material');
 
-            $table->text('homework');
-
-            $table->string('status');
-
             $table->timestamps();
 
             $table->softDeletes();

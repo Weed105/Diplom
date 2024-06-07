@@ -10,6 +10,7 @@ use App\Http\Requests\MassDestroyCourseRequest;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Institution;
+use App\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,7 +36,11 @@ class CoursesController extends Controller
 
         $disciplines = Discipline::all()->pluck('name', 'id');
 
-        return view('admin.courses.create', compact('institutions', 'disciplines'));
+        $teachers = User::whereHas('roles', function ($query) {
+            $query->where('role_id', 4);
+        })->pluck('name', 'id');
+
+        return view('admin.courses.create', compact('institutions', 'disciplines', 'teachers'));
     }
 
     public function store(StoreCourseRequest $request)
@@ -58,9 +63,13 @@ class CoursesController extends Controller
 
         $disciplines = Discipline::all()->pluck('name', 'id');
 
+        $teachers = User::whereHas('roles', function ($query) {
+            $query->where('role_id', 4);
+        })->pluck('name', 'id');
+
         $course->load('institution', 'disciplines');
 
-        return view('admin.courses.edit', compact('institutions', 'disciplines', 'course'));
+        return view('admin.courses.edit', compact('institutions', 'disciplines', 'course', 'teachers'));
     }
 
     public function update(UpdateCourseRequest $request, Course $course)

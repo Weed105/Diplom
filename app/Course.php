@@ -34,6 +34,7 @@ class Course extends Model implements HasMedia
         'description',
         'material',
         'homework',
+        'teacher',
         'status',
         'institution_id',
     ];
@@ -76,6 +77,13 @@ class Course extends Model implements HasMedia
     {
         return $this->belongsToMany(Discipline::class);
     }
+
+
+    public function teacher_id()
+    {
+        return $this->belongsTo(User::class, 'teacher');
+    }
+
 
     public function scopeSearchResults($query)
     {

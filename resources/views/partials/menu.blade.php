@@ -88,6 +88,7 @@
                     </a>
                 </li>
             @endcan
+
             @can('enrollment_access')
                 <li class="nav-item">
                     <a href="{{ route('admin.enrollments.index') }}"

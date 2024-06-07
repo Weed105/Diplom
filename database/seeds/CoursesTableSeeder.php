@@ -21,24 +21,18 @@ class CoursesTableSeeder extends Seeder
                 'description' => "Описание курса",
                 'institution_id' => 1,
                 'material' => "material",
-                'homework' => "homework",
-                'status' => "Не запущен",
             ],
             [
                 'name' => 'Разработка UX/UI дизайна',
                 'description' => "Описание курса",
                 'institution_id' => 2,
                 'material' => "material",
-                'homework' => "homework",
-                'status' => "Не запущен",
             ],
             [
                 'name' => 'Разработка ПО',
                 'description' => "Описание курса",
                 'institution_id' => 3,
                 'material' => "material",
-                'homework' => "homework",
-                'status' => "Не запущен",
             ],
         ];
 

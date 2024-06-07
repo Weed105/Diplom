@@ -70,6 +70,24 @@
                     </div>
                 @endif
 
+
+                <div class="form-group {{ $errors->has('teacher') ? 'has-error' : '' }}">
+                    <label for="teacher">Преподаватель*</label>
+                    <select name="teacher" id="teacher" class="form-control select2" required>
+                        @foreach ($teachers as $id => $teacher)
+                            <option value="{{ $id }}"
+                                {{ (isset($course) && $course->teacher_id ? $course->teacher_id->id : old('teacher')) == $id ? 'selected' : '' }}>
+                                {{ $teacher }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('teacher'))
+                        <em class="invalid-feedback">
+                            {{ $errors->first('teacher') }}
+                        </em>
+                    @endif
+                </div>
+
+
                 <div class="form-group {{ $errors->has('material') ? 'has-error' : '' }}">
                     <label for="material">Материал</label>
                     <textarea id="material" name="material" class="form-control ">{{ old('material', isset($course) ? $course->material : '') }}</textarea>
@@ -101,6 +119,9 @@
                         <option value="Запущен"
                             {{ (isset($course) && $course->status ? $course->status : old('status')) == 'Запущен' ? 'selected' : '' }}>
                             Запущен</option>
+                        <option value="Завершен"
+                            {{ (isset($course) && $course->status ? $course->status : old('status')) == 'Завершен' ? 'selected' : '' }}>
+                            Завершен</option>
                     </select>
                     @if ($errors->has('status'))
                         <em class="invalid-feedback">

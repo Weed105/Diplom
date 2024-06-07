@@ -8,9 +8,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyEnrollmentRequest;
 use App\Http\Requests\StoreEnrollmentRequest;
 use App\Http\Requests\UpdateEnrollmentRequest;
+use App\Mail\DemoEmail;
+use App\Mail\FeedbackMailer;
 use App\User;
 use Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use stdClass;
 use Symfony\Component\HttpFoundation\Response;
 
 class EnrollmentsController extends Controller
@@ -58,6 +62,16 @@ class EnrollmentsController extends Controller
     public function update(UpdateEnrollmentRequest $request, Enrollment $enrollment)
     {
         $enrollment->update($request->all());
+
+        if ($enrollment->status == "Принято") {
+            $objDemo = new stdClass();
+            $objDemo->name = $enrollment->user->name;
+            $objDemo->course = $enrollment->course->name;
+            $objDemo->email = $enrollment->user->email;
+            $objDemo->start_date = 'ReceiverUserName';
+            $objDemo->sender = 'Курсы';
+            Mail::to("vbazarbaev188@gmail.com")->send(new DemoEmail($objDemo));
+        }
 
         return redirect()->route('admin.enrollments.index');
     }

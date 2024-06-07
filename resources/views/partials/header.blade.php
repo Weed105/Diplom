@@ -15,6 +15,13 @@
 
                     <div class="collapse navbar-collapse main-menu-item justify-content-end" id="navbarSupportedContent">
                         <ul class="navbar-nav align-items-center">
+                            @auth
+
+                                <li class="nav-item" style="margin-right: 200px; ">
+                                    <p style="color: #ff663b;">{{ auth()->user()->name }}</p>
+                                </li>
+
+                            @endauth
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">Главная</a>
                             </li>
@@ -51,6 +58,11 @@
                                     </div>
                                 </li>
                             @endif
+                            @guest
+                                <li class="d-none d-lg-block">
+                                    <a class="btn_1" href="{{ asset('login') }}">Войти</a>
+                                </li>
+                            @endguest
                             @auth
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('enroll.myCourses') }}">Мои Курсы</a>

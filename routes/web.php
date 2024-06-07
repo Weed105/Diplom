@@ -20,6 +20,17 @@ Route::post('answer/{course}', 'AnswerController@create')->name('answer.create')
 Route::get('my-courses', 'EnrollmentController@myCourses')->name('enroll.myCourses')->middleware('auth');
 Route::resource('courses', 'CourseController')->only(['index', 'show']);
 
+
+
+Route::get('storage/{file}', function ($file) {
+    $path = storage_path('app/' . $file);
+    if (file_exists($path)) {
+        return response()->file($path);
+    } else {
+        abort(404);
+    }
+})->where('file', '.*')->name('storage');
+
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
@@ -47,6 +58,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('courses/destroy', 'CoursesController@massDestroy')->name('courses.massDestroy');
     Route::post('courses/media', 'CoursesController@storeMedia')->name('courses.storeMedia');
     Route::resource('courses', 'CoursesController');
+
+    // Answers
+    Route::resource('answers', 'AnswersController');
 
     // Modules
     Route::delete('modules/destroy', 'ModulesController@massDestroy')->name('modules.massDestroy');

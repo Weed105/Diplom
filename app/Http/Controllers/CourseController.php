@@ -8,7 +8,7 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::where('status', 'Не запущен')->searchResults()
+        $courses = Course::searchResults()
             ->paginate(6);
 
         $breadcrumb = "Курсы";

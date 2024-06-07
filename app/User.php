@@ -82,4 +82,14 @@ class User extends Authenticatable
     {
         return $this->roles->contains(2);
     }
+
+    public function isTeacher()
+    {
+        return $this->roles->contains(4);
+    }
+
+    public function isStudent()
+    {
+        return $this->roles->contains(3);
+    }
 }

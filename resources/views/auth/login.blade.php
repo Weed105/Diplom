@@ -2,11 +2,10 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card mx-4">
+            <div class="card mx-4" style="width: 80%; border-radius: 50px">
                 <div class="card-body p-4">
-                    <h1>{{ trans('panel.site_title') }}</h1>
+                    <h1 style="color: #0c2e60; text-align: center; padding-bottom: 50px">{{ trans('panel.site_title') }}</h1>
 
-                    <p class="text-muted">{{ trans('global.login') }}</p>
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -63,7 +62,8 @@
 
                         <div class="row">
                             <div class="col-6">
-                                <button type="submit" class="btn btn-primary px-4">
+                                <button type="submit" class="btn btn-primary px-4"
+                                    style="background: #ff663b; border-color: #ff663b">
                                     Войти
                                 </button>
                             </div>
